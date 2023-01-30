@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.dashboard {
+  padding-top: 50px;
+}
+
+.dashboard-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.post-item {
+  border: 2px solid #ccc;
+  padding: 20px 15px;
+  max-width: 200px;
+  background-color: #fafafa;
+  border-radius: 10px;
+}
