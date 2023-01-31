@@ -1,5 +1,8 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+import axios from 'axios'
 import { PostList } from "./PostList/PostList"
+import { CreatePost } from './CreatePost'
+import { API_BASE_URL } from '../constants'
 
 const POSTS = [
     {id: 111, title: 'Oracle Certified Associate', author: 'O\'rielly'},
@@ -8,23 +11,26 @@ const POSTS = [
 ]
 
 export const Dashboard = () => {
+    const [posts, setPosts] = useState([])
 
-    const [title, setTitle] = useState("Dashboard");
-    const handleTitleChange = e => {
-        setTitle(e.target.value)
+    const fetchPosts = async () => {
+        try {
+            const res = await axios.get(`${API_BASE_URL}/posts`)
+            setPosts(res.data)
+        } catch(e) {
+            console.log(`Failed to fetch posts! ${e}`)
+            setPosts([])
+        }
     }
+
+    useEffect(() => {
+        fetchPosts()
+    }, [])
 
     return (
         <div className="dashboard">
-            <div className='dashboard-title'>
-                <input 
-                    value={title} 
-                    name="title" 
-                    onChange={handleTitleChange} 
-                />
-                <button type='button' >Edit title</button>
-            </div>
-            <PostList posts={POSTS} />
+            <PostList posts={posts} />
+            <CreatePost />
         </div>
     )
 }

@@ -16,9 +16,15 @@ code {
   padding-top: 50px;
 }
 
-.dashboard-title {
-  text-align: center;
-  margin-bottom: 50px;
+.create-post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 50px;
 }
 
 .post-list {
