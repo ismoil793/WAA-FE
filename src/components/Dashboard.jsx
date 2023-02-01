@@ -3,6 +3,7 @@ import axios from 'axios'
 import { PostList } from "./PostList/PostList"
 import { CreatePost } from './CreatePost'
 import { API_BASE_URL } from '../constants'
+import { PostProvider } from '../store/PostContext'
 
 const POSTS = [
     {id: 111, title: 'Oracle Certified Associate', author: 'O\'rielly'},
@@ -28,9 +29,11 @@ export const Dashboard = () => {
     }, [])
 
     return (
-        <div className="dashboard">
-            <PostList posts={posts} />
-            <CreatePost />
-        </div>
+        <PostProvider>
+            <div className="dashboard">
+                <PostList posts={posts} />
+                <CreatePost />
+            </div>
+        </PostProvider>
     )
 }
